@@ -1,0 +1,22 @@
+{
+  "name": "food-delivery",
+  "version": "1.0.0",
+  "description": "food delivery app with react native",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HROKA/food-delivery.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HROKA/food-delivery/issues"
+  },
+  "homepage": "https://github.com/HROKA/food-delivery#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
