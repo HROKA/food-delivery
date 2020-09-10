@@ -1,17 +1,18 @@
-const { Pool } = require("pg");
-require("env2")("config.env");
+const { Pool } = require('pg');
+require('env2')('config.env');
 
 let dbUrl;
 switch (process.env.NODE_ENV) {
-  case "production":
+  case 'production':
     dbUrl = process.env.PRODUCT_URL;
     break;
-  case "development":
+  case 'development':
     dbUrl = process.env.DEV_URL;
-    console.log("Development database connected");
+    // eslint-disable-next-line no-console
+    console.log('Development database connected');
     break;
   default:
-    throw new Error("There is No Database URL");
+    throw new Error('There is No Database URL');
 }
 
 const options = {
