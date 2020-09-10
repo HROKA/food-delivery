@@ -6,7 +6,8 @@ require('env2')('../.env');
 const connection = require('./connection');
 
 const dbBuild = () => {
-  const sql = readFileSync(join(__dirname, 'data.sql')).toString();
+  let sql = readFileSync(join(__dirname, 'data.sql')).toString();
+  sql += readFileSync(join(__dirname, 'fackeData.sql')).toString();
   return connection.query(sql);
 };
 
