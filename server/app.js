@@ -10,14 +10,14 @@ app.disabled('x-powered-by');
 
 app.set('port', process.env.PORT || 5000);
 
-const middlewares = [
-    compression(),
-    cookieParser(),
-    express.json(),
-    express.urlencoded({ extended: false }),
-  ];
+const middleWares = [
+  compression(),
+  cookieParser(),
+  express.json(),
+  express.urlencoded({ extended: false }),
+];
 
-app.use(middlewares);
+app.use(middleWares);
 
 app.use('/api/v1', router);
 
