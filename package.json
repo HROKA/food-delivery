@@ -4,7 +4,12 @@
   "description": "food delivery app with react native",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "cd server && npm run dev",
+    "client": "cd client && npm start",
+    "start": "NODE_ENV=production node server/index.js",
+    "dev": "nodemon server/index.js",
+    "kill": "fuser -k 5000/tcp",
+    "kill-run": "npm run kill && npm run server"
   },
   "repository": {
     "type": "git",
@@ -17,6 +22,17 @@
   },
   "homepage": "https://github.com/HROKA/food-delivery#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "axios": "^0.20.0",
+    "bcrypt": "^5.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^7.18.2",
+    "yup": "^0.29.1",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5"
+  },
+  "devDependencies": {
+    "prettier": "^2.0.5",
+    "nodemon": "^2.0.4"
   }
 }
