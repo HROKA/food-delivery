@@ -6,13 +6,10 @@ switch (process.env.NODE_ENV) {
   case 'production':
     dbUrl = process.env.PRODUCT_URL;
     break;
-  case 'development':
+  default:
     dbUrl = process.env.DEV_URL;
     // eslint-disable-next-line no-console
     console.log('Development database connected');
-    break;
-  default:
-    throw new Error('There is No Database URL');
 }
 
 const options = {
