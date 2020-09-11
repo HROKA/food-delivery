@@ -2,9 +2,9 @@ const express = require('express');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 
-const router = require('./router');
-
 const app = express();
+
+const router = require('./router');
 
 app.disabled('x-powered-by');
 
