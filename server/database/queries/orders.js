@@ -3,7 +3,8 @@ const connection = require('../config/connection');
 
 const query = {
   // get all orders
-  getAllOrders: () => connection.query('SELECT * FROM orders;'),
+  getAllOrders: () =>
+    connection.query('SELECT * FROM orders order by date desc;'),
 
   // delete order by id
   getOrderById: (id) =>
