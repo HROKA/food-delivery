@@ -1,7 +1,8 @@
 const router = require('express').Router();
 
-const { getAllOrders } = require('../controllers/routes/orders');
+const { AllOrders, deleteOrderbyId } = require('../controllers/routes/orders');
 
-router.get('/orders', getAllOrders);
+router.get('/orders', AllOrders);
+router.delete('/orders/:id', deleteOrderbyId);
 
 module.exports = router;
