@@ -1,10 +1,10 @@
 const router = require('express').Router();
 
 const clientRouter = require('./clients');
-const { getAllOrders } = require('../controllers/routes/orders');
+const adminRouter = require('./admin');
 
 router.use('/client', clientRouter);
 
-router.get('/orders', getAllOrders);
+router.use('/admin', adminRouter);
 
 module.exports = router;
