@@ -1,10 +1,10 @@
-const { getAllProducts } = require('../../database/queries');
+const { getAllProducts } = require('../../database/queries/products');
 
 const products = {
-  getAllProducts: (req, res) =>
+  getAllProducts: (req, res, next) =>
     getAllProducts()
       .then(({ rows }) => res.status(200).json(rows))
-      .catch((err) => res.status(400).json({ message: 'Bad request', err })),
+      .catch(next),
 };
 
 module.exports = products;
