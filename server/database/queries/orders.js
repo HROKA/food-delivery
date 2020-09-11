@@ -6,9 +6,13 @@ const query = {
   getAllOrders: () =>
     connection.query('SELECT * FROM orders order by date desc;'),
 
-  // delete order by id
+  // get order by id
   getOrderById: (id) =>
     connection.query(`SELECT * FROM orders WHERE id = $1;`, [id]),
+
+  // get client orders
+  getClient_Orders: (client_id) =>
+    connection.query(`SELECT * FROM orders WHERE client_id = $1;`, [client_id]),
 
   // delete order by id
   deleteOrderById: (id) =>
