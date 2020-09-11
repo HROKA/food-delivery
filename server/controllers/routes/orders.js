@@ -1,8 +1,8 @@
 const {
   getAllOrders,
   deleteOrderById,
-  deleteDetailsByOrderId,
-} = require('../../database/queries');
+} = require('../../database/queries/orders');
+const { deleteDetailsByOrderId } = require('../../database/queries/details');
 
 const products = {
   // get all orders
