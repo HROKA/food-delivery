@@ -40,7 +40,10 @@ BEGIN;
 
     ('ستيك لحم عجل طازج', 'kg', '40',
       'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/119096118_3255074301274456_4241548392020449318_n.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_ohc=R6nld4ygfLUAX_fecZx&_nc_ht=scontent.fgza2-1.fna&oh=a28c16896a74e8fb03e3774edb5d7f99&oe=5F80CBDE'
-, 0, true, '{"عجل طازج"}');
+, 0, true, '{"عجل طازج"}'),
+    ('هامبورجر دجاج طازج', 'kg', '16',
+      'https://scontent.fgza2-1.fna.fbcdn.net/v/t1.0-9/119096118_3255074301274456_4241548392020449318_n.jpg?_nc_cat=101&_nc_sid=8024bb&_nc_ohc=R6nld4ygfLUAX_fecZx&_nc_ht=scontent.fgza2-1.fna&oh=a28c16896a74e8fb03e3774edb5d7f99&oe=5F80CBDE'
+, 0, true, '{"دجاج"}');
 
 
   Insert Into  orders
