@@ -1,8 +1,10 @@
 const router = require('express').Router();
 
-const { AllOrders, deleteOrderbyId } = require('../controllers/routes/orders');
+const clientRouter = require('./clients');
+const adminRouter = require('./admin');
 
-router.get('/orders', AllOrders);
-router.delete('/orders/:id', deleteOrderbyId);
+router.use('/client', clientRouter);
+
+router.use('/admin', adminRouter);
 
 module.exports = router;

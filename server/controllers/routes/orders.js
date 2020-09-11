@@ -1,4 +1,8 @@
-const { getAllOrders, deleteOrderById } = require('../../database/queries');
+const {
+  getAllOrders,
+  deleteOrderById,
+  deleteDetailsByOrderId,
+} = require('../../database/queries');
 
 const products = {
   // get all orders
@@ -10,9 +14,11 @@ const products = {
   // delete order by id
   deleteOrderbyId: (req, res) => {
     const id = req.url.split('/')[2];
-    deleteOrderById(id)
-      .then(({ rows }) => res.status(200).json(rows))
-      .catch((err) => res.status(400).json({ message: 'Bad request', err }));
+    deleteDetailsByOrderId(id).then(() => {
+      deleteOrderById(id)
+        .then(() => res.status(200).json({ message: 'delete successful' }))
+        .catch((err) => res.status(400).json({ message: 'Bad request', err }));
+    });
   },
 };
 
