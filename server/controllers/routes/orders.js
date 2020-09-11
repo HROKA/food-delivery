@@ -4,6 +4,7 @@ const {
   deleteOrderById,
   addNewOrder,
   getOrderById,
+  getClient_Orders,
 } = require('../../database/queries/orders');
 
 const { deleteDetailsByOrderId } = require('../../database/queries/details');
@@ -26,6 +27,16 @@ const products = {
         res
           .status(400)
           .json({ message: `failed to get order by id ${id}`, err })
+      );
+  },
+
+  // get client orders
+  getClientOrders: (req, res) => {
+    const { client_id } = req.body;
+    getClient_Orders(client_id)
+      .then(({ rows }) => res.status(200).json(rows))
+      .catch((err) =>
+        res.status(400).json({ message: 'failed to get orders', err })
       );
   },
 
