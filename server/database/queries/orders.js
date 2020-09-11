@@ -21,7 +21,7 @@ const query = {
     connection.query(
       ` Insert Into  orders
     (client_id,total,order_price,address,mobile_number,delivery_price)
-  VALUES ($1, $2, $3, $4, $5, )`,
+  VALUES ($1, $2, $3, $4, $5, $6)`,
       [client_id, total, order_price, address, mobile_number, delivery_price]
     ),
 };
