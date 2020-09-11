@@ -7,7 +7,7 @@ const connection = require('./connection');
 
 const dbBuild = () => {
   let sql = readFileSync(join(__dirname, 'data.sql')).toString();
-  sql += readFileSync(join(__dirname, 'fackeData.sql')).toString();
+  sql += readFileSync(join(__dirname, 'fakeData.sql')).toString();
   return connection.query(sql);
 };
 

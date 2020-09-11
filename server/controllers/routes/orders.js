@@ -1,8 +1,11 @@
+/* eslint-disable camelcase */
 const {
   getAllOrders,
   deleteOrderById,
+  addNewOrder,
   getOrderById,
 } = require('../../database/queries/orders');
+
 const { deleteDetailsByOrderId } = require('../../database/queries/details');
 
 const products = {
@@ -42,6 +45,30 @@ const products = {
             .json({ message: 'Order has been used in details', err })
         );
     });
+  },
+
+  // create new order
+  createOrder: (req, res) => {
+    const {
+      client_id,
+      total,
+      order_price,
+      address,
+      mobile_number,
+      delivery_price,
+    } = req.body;
+    addNewOrder(
+      client_id,
+      total,
+      order_price,
+      address,
+      mobile_number,
+      delivery_price
+    )
+      .then(() =>
+        res.status(200).json({ message: 'order was added successfully' })
+      )
+      .catch((err) => res.status(400).json({ message: 'Bad request', err }));
   },
 };
 
