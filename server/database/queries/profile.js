@@ -2,6 +2,10 @@
 const connection = require('../config/connection');
 
 const clientQuery = {
+  // get all clients data
+  getAllClients: () =>
+    connection.query('SELECT * FROM clients ORDER BY id DESC'),
+
   // get client data
   getClient_Data: (id) =>
     connection.query('SELECT * FROM clients WHERE id = $1;', [id]),
