@@ -5,6 +5,7 @@ const {
   addNewOrder,
   getOrderById,
   getClient_Orders,
+  deleteClient_Order,
 } = require('../../database/queries/orders');
 
 const { deleteDetailsByOrderId } = require('../../database/queries/details');
@@ -43,19 +44,33 @@ const products = {
   // delete order by id
   deleteOrderbyId: (req, res) => {
     const { id } = req.params;
-    deleteDetailsByOrderId(id).then(() => {
-      deleteOrderById(id)
-        .then(() =>
+    deleteDetailsByOrderId(id)
+      .then(() => {
+        deleteOrderById(id).then(() =>
           res
             .status(200)
             .json({ message: `Order ${id} was deleted successfully` })
-        )
-        .catch((err) =>
-          res
-            .status(400)
-            .json({ message: 'Order has been used in details', err })
         );
-    });
+      })
+      .catch((err) =>
+        res.status(400).json({ message: 'Order has been used in details', err })
+      );
+  },
+
+  // delete client order
+  deleteClientOrder: (req, res) => {
+    const { id, client_id } = req.body;
+    deleteDetailsByOrderId(id)
+      .then(() => {
+        deleteClient_Order(id, client_id).then(() =>
+          res
+            .status(200)
+            .json({ message: `Order ${id} was deleted successfully` })
+        );
+      })
+      .catch((err) =>
+        res.status(400).json({ message: 'Order delete failed', err })
+      );
   },
 
   // create new order
@@ -79,7 +94,9 @@ const products = {
       .then(() =>
         res.status(200).json({ message: 'order was added successfully' })
       )
-      .catch((err) => res.status(400).json({ message: 'Bad request', err }));
+      .catch((err) =>
+        res.status(400).json({ message: 'create order failed', err })
+      );
   },
 };
 
