@@ -39,4 +39,7 @@ adminRouter.patch('/product/:id', updateProduct);
 // **DELETE**
 adminRouter.delete('/product/:id', deleteProduct);
 
+// --------------------- ***Clients***--------------------------
+// **GET**
+
 module.exports = adminRouter;
