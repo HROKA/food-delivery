@@ -12,37 +12,29 @@ const { deleteDetailsByOrderId } = require('../../database/queries/details');
 
 const products = {
   // get all orders
-  AllOrders: (req, res) =>
+  AllOrders: (req, res, next) =>
     getAllOrders()
       .then(({ rows }) => res.status(200).json(rows))
-      .catch((err) =>
-        res.status(400).json({ message: 'failed to get orders', err })
-      ),
+      .catch(() => next('failed to get orders')),
 
   // get order by id
-  orderById: (req, res) => {
+  orderById: (req, res, next) => {
     const { id } = req.params;
     getOrderById(id)
       .then(({ rows }) => res.status(200).json(rows))
-      .catch((err) =>
-        res
-          .status(400)
-          .json({ message: `failed to get order by id ${id}`, err })
-      );
+      .catch(() => next(`failed to get order by id ${id}`));
   },
 
   // get client orders
-  getClientOrders: (req, res) => {
+  getClientOrders: (req, res, next) => {
     const { client_id } = req.body;
     getClient_Orders(client_id)
       .then(({ rows }) => res.status(200).json(rows))
-      .catch((err) =>
-        res.status(400).json({ message: 'failed to get orders', err })
-      );
+      .catch(() => next('failed to get orders'));
   },
 
   // delete order by id
-  deleteOrderbyId: (req, res) => {
+  deleteOrderbyId: (req, res, next) => {
     const { id } = req.params;
     deleteDetailsByOrderId(id)
       .then(() => {
@@ -52,13 +44,11 @@ const products = {
             .json({ message: `Order ${id} was deleted successfully` })
         );
       })
-      .catch((err) =>
-        res.status(400).json({ message: 'Order has been used in details', err })
-      );
+      .catch(() => next('Order has been used in details'));
   },
 
   // delete client order
-  deleteClientOrder: (req, res) => {
+  deleteClientOrder: (req, res, next) => {
     const { id, client_id } = req.body;
     deleteDetailsByOrderId(id)
       .then(() => {
@@ -68,35 +58,16 @@ const products = {
             .json({ message: `Order ${id} was deleted successfully` })
         );
       })
-      .catch((err) =>
-        res.status(400).json({ message: 'Order delete failed', err })
-      );
+      .catch(() => next('Order delete failed'));
   },
 
   // create new order
-  createOrder: (req, res) => {
-    const {
-      client_id,
-      total,
-      order_price,
-      address,
-      mobile_number,
-      delivery_price,
-    } = req.body;
-    addNewOrder(
-      client_id,
-      total,
-      order_price,
-      address,
-      mobile_number,
-      delivery_price
-    )
+  createOrder: (req, res, next) => {
+    addNewOrder(req.body)
       .then(() =>
         res.status(200).json({ message: 'order was added successfully' })
       )
-      .catch((err) =>
-        res.status(400).json({ message: 'create order failed', err })
-      );
+      .catch(() => next('create order failed'));
   },
 };
 
