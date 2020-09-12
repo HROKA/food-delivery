@@ -5,6 +5,10 @@ const productsQueries = {
   // get all Products
   getAllProducts: () => connection.query('SELECT * FROM products'),
 
+  // get product by
+  getProductByID: (id) =>
+    connection.query(`SELECT * FROM products where id=$1;`, [id]),
+
   // add new Products
   addProduct: ({
     name,
