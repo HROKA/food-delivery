@@ -8,6 +8,8 @@ const {
 
 const {
   getAllProducts,
+  addProduct,
+  updateProduct,
   deleteProduct,
 } = require('../controllers/routes/products');
 
@@ -22,7 +24,13 @@ adminRouter.delete('/orders/:id', deleteOrderbyId);
 
 // --------------------- ***products***--------------------------
 // **GET**
-adminRouter.get('/products', getAllProducts);
+adminRouter.get('/product', getAllProducts);
+
+// **POST**
+adminRouter.post('/product/', addProduct);
+
+// **PATCH**
+adminRouter.patch('/product/:id', updateProduct);
 
 // **DELETE**
 adminRouter.delete('/product/:id', deleteProduct);

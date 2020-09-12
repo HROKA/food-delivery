@@ -21,4 +21,9 @@ app.use(middleWares);
 
 app.use('/api/v1', router);
 
+// error 404 handling
+app.use('*', (req, res) =>
+  res.status(404).json({ message: 'Bad Request 404' })
+);
+
 module.exports = app;
