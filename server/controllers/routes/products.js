@@ -1,6 +1,7 @@
 const {
   getAllProducts,
   addProduct,
+  updateProduct,
   deleteProduct,
 } = require('../../database/queries/products');
 
@@ -12,12 +13,21 @@ const products = {
       .catch(() => next('Failed to get products')),
 
   // add new products
-  addProduct: (req, res, next) => {
+  addProduct: (req, res, next) =>
     addProduct(req.body)
       .then(() =>
-        res.status(200).json({ message: 'Product was added successfully' })
+        res.status(200).json({ message: 'Product added successfully' })
       )
-      .catch(() => next('Failed to add product'));
+      .catch(() => next('Failed to add product')),
+
+  // update product by id
+  updateProduct: (req, res, next) => {
+    const { id } = req.params;
+    updateProduct({ id, ...req.body })
+      .then(() =>
+        res.status(200).json({ message: 'Product updated successfully' })
+      )
+      .catch(() => next('Failed to update product'));
   },
 
   // delete product with id

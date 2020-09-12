@@ -38,6 +38,31 @@ const productsQueries = {
       [name, unit, price, image, discount_value, available, category]
     ),
 
+  // update Product by id
+  updateProduct: ({
+    id,
+    name,
+    unit,
+    price,
+    image,
+    discount_value,
+    available,
+    category,
+  }) =>
+    connection.query(
+      `
+        UPDATE products SET 
+          name = $1,
+          unit = $2,
+          price = $3,
+          image = $4,
+          discount_value = $5,
+          available = $6,
+          category = $7
+       where id=$8;`,
+      [name, unit, price, image, discount_value, available, category, id]
+    ),
+
   // delete product by id
   deleteProduct: (id) =>
     connection.query(`DELETE FROM products WHERE id = $1;`, [id]),
