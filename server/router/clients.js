@@ -6,7 +6,10 @@ const {
   deleteClientOrder,
 } = require('../controllers/routes/orders');
 
-const { getAllProducts } = require('../controllers/routes/products');
+const {
+  getAllProducts,
+  getProductByID,
+} = require('../controllers/routes/products');
 
 // --------------------- ***orders***--------------------------
 // **GET**
@@ -21,5 +24,8 @@ ClientsRouter.delete('/orders', deleteClientOrder);
 // --------------------- ***products***--------------------------
 // **GET**
 ClientsRouter.get('/products', getAllProducts);
+
+// **GET**
+ClientsRouter.get('/product/:id', getProductByID);
 
 module.exports = ClientsRouter;
