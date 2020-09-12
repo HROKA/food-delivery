@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 const connection = require('../config/connection');
 
-const query = {
+const orderQuery = {
   // get all orders
   getAllOrders: () =>
     connection.query('SELECT * FROM orders order by date desc;'),
@@ -26,20 +26,29 @@ const query = {
     ]),
 
   // add new order
-  addNewOrder: (
+  addNewOrder: ({
     client_id,
     total,
     order_price,
     address,
+    status,
     mobile_number,
-    delivery_price
-  ) =>
+    delivery_price,
+  }) =>
     connection.query(
       ` Insert Into  orders
-    (client_id,total,order_price,address,mobile_number,delivery_price)
-  VALUES ($1, $2, $3, $4, $5, $6)`,
-      [client_id, total, order_price, address, mobile_number, delivery_price]
+    (client_id, total, order_price, address, status, mobile_number, delivery_price)
+  VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+      [
+        client_id,
+        total,
+        order_price,
+        address,
+        status,
+        mobile_number,
+        delivery_price,
+      ]
     ),
 };
 
-module.exports = query;
+module.exports = orderQuery;
