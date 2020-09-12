@@ -18,6 +18,13 @@ const query = {
   deleteOrderById: (id) =>
     connection.query(`DELETE FROM orders WHERE id = $1;`, [id]),
 
+  // delete client order
+  deleteClient_Order: (id, client_id) =>
+    connection.query(`DELETE FROM orders WHERE id = $1 and client_id = $2;`, [
+      id,
+      client_id,
+    ]),
+
   // add new order
   addNewOrder: (
     client_id,

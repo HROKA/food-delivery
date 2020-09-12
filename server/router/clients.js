@@ -1,18 +1,25 @@
 const ClientsRouter = require('express').Router();
 
-const { getAllProducts } = require('../controllers/routes/products');
 const {
-  createOrder,
   getClientOrders,
+  createOrder,
+  deleteClientOrder,
 } = require('../controllers/routes/orders');
 
-// --------------------- ***products***--------------------------
-// **GET**
-ClientsRouter.get('/products', getAllProducts);
+const { getAllProducts } = require('../controllers/routes/products');
 
+// --------------------- ***orders***--------------------------
+// **GET**
 ClientsRouter.get('/orders', getClientOrders);
 
 // **POST**
 ClientsRouter.post('/orders', createOrder);
+
+// **DELETE**
+ClientsRouter.delete('/orders', deleteClientOrder);
+
+// --------------------- ***products***--------------------------
+// **GET**
+ClientsRouter.get('/products', getAllProducts);
 
 module.exports = ClientsRouter;
