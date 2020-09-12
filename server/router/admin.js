@@ -1,5 +1,6 @@
 const adminRouter = require('express').Router();
 
+const { getAllClients } = require('../controllers/routes/profile');
 const {
   AllOrders,
   orderById,
@@ -41,5 +42,6 @@ adminRouter.delete('/product/:id', deleteProduct);
 
 // --------------------- ***Clients***--------------------------
 // **GET**
+adminRouter.get('/clients', getAllClients);
 
 module.exports = adminRouter;
