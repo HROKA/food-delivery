@@ -8,6 +8,7 @@ const {
 
 const {
   getAllProducts,
+  getProductByID,
   addProduct,
   updateProduct,
   deleteProduct,
@@ -24,7 +25,10 @@ adminRouter.delete('/orders/:id', deleteOrderbyId);
 
 // --------------------- ***products***--------------------------
 // **GET**
-adminRouter.get('/product', getAllProducts);
+adminRouter.get('/products', getAllProducts);
+
+// **GET**
+adminRouter.get('/product/:id', getProductByID);
 
 // **POST**
 adminRouter.post('/product/', addProduct);

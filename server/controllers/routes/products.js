@@ -1,5 +1,6 @@
 const {
   getAllProducts,
+  getProductByID,
   addProduct,
   updateProduct,
   deleteProduct,
@@ -11,6 +12,14 @@ const products = {
     getAllProducts()
       .then(({ rows }) => res.status(200).json(rows))
       .catch(() => next('Failed to get products')),
+
+  // get product by id
+  getProductByID: (req, res, next) => {
+    const { id } = req.params;
+    getProductByID(id)
+      .then(({ rows }) => res.status(200).json(rows))
+      .catch(() => next('Failed to get the product'));
+  },
 
   // add new products
   addProduct: (req, res, next) =>
