@@ -11,6 +11,8 @@ const {
   getProductByID,
 } = require('../controllers/routes/products');
 
+const { getClientData } = require('../controllers/routes/profile')
+
 // --------------------- ***orders***--------------------------
 // **GET**
 ClientsRouter.get('/orders', getClientOrders);
@@ -25,7 +27,10 @@ ClientsRouter.delete('/orders', deleteClientOrder);
 // **GET**
 ClientsRouter.get('/products', getAllProducts);
 
-// **GET**
 ClientsRouter.get('/product/:id', getProductByID);
+
+// --------------------- ***profile***--------------------------
+// **GET**
+ClientsRouter.get('/profile/:id', getClientData);
 
 module.exports = ClientsRouter;

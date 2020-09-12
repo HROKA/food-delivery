@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 const connection = require('../config/connection');
 
-const query = {
+const orderQuery = {
   // get all orders
   getAllOrders: () =>
     connection.query('SELECT * FROM orders order by date desc;'),
@@ -51,4 +51,4 @@ const query = {
     ),
 };
 
-module.exports = query;
+module.exports = orderQuery;
