@@ -11,7 +11,10 @@ const {
   getProductByID,
 } = require('../controllers/routes/products');
 
-const { getClientData } = require('../controllers/routes/profile')
+const {
+  getClientData,
+  updateProfile,
+} = require('../controllers/routes/profile');
 
 // --------------------- ***orders***--------------------------
 // **GET**
@@ -32,5 +35,8 @@ ClientsRouter.get('/product/:id', getProductByID);
 // --------------------- ***profile***--------------------------
 // **GET**
 ClientsRouter.get('/profile/:id', getClientData);
+
+// **PATCH**
+ClientsRouter.patch('/profile/:id', updateProfile);
 
 module.exports = ClientsRouter;
