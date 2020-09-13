@@ -3,6 +3,6 @@ const adminSignIn = require('../controllers/auth/adminSignIn');
 
 // --------------------- ***ADMIN***--------------------------
 // **POST**
-authRouter.post('/sign-in/admin', adminSignIn);
+authRouter.post('/admin/sign-in', adminSignIn);
 
 module.exports = authRouter;
