@@ -16,7 +16,7 @@ const clients = {
   // get client data
   getClientData: (req, res, next) => {
     const { id } = req.params;
-    getClient_Data(id)
+    getClient_Data({ id })
       .then(({ rows }) => res.status(200).json(rows))
       .catch(() => next('User Not found'));
   },
