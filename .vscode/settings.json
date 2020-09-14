@@ -1,8 +1,12 @@
 {
-  "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "editor.codeActionsOnSave": {
     "source.fixAll": false,
     "prettier.singleQuote": true
+  },
+  "launch": {
+    "extends": [ "eslint:recommended", "plugin:react/recommended" ],
+    "configurations": [],
+    "compounds": []
   }
 }
