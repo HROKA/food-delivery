@@ -6,7 +6,7 @@ const authQuery = {
   signUpClient: (name, password, value, avatar, location, address, favorite) =>
     connection.query(
       `INSERT INTO clients (name,password,${
-      Object.keys(value)[0]
+        Object.keys(value)[0]
       },avatar,location,address,favorite) VALUES ($1, $2, $3, $4, $5, $6, $7::text[])`,
       [
         name,
