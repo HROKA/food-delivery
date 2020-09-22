@@ -17,11 +17,11 @@ function App() {
     }
   });
   return (
-    <div className='App'>
-      <header className='App-header'>
+    <div className="App">
+      <header className="App-header">
         <h1>Dashboard</h1>
         {time && (
-          <div className='time'>
+          <div className="time">
             <h3>{time.h} : </h3>
             <h3> {time.m} : </h3>
             <h3> {time.s} </h3>

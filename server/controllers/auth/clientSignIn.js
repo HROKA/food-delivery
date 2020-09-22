@@ -16,7 +16,7 @@ const adminSignIn = async (req, res, next) => {
     compare(password, rows[0].password, (err, result) => {
       if (!result) next('Wrong user name or password');
       else {
-        const clientToken = { adminId: rows[0].id };
+        const clientToken = rows[0].name + rows[0].password;
         const cookie = sign(clientToken, process.env.SECRET_KEY);
         res.status(200).json({
           status: 'Log in successfully',

@@ -7,8 +7,11 @@ const clientQuery = {
     connection.query('SELECT * FROM clients ORDER BY id DESC'),
 
   // get client data
-  getClient_Data: (id) =>
-    connection.query('SELECT * FROM clients WHERE id = $1;', [id]),
+  getClient_Data: (value) =>
+    connection.query(
+      `SELECT * FROM clients WHERE ${Object.keys(value)[0]} = $1;`,
+      [value[Object.keys(value)[0]]]
+    ),
 
   // update client data
   updateProfile: ({

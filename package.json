@@ -1,7 +1,7 @@
 {
   "name": "food-delivery",
   "version": "1.0.0",
-  "description": "food delivery app with react native",
+  "description": "food delivery app",
   "main": "index.js",
   "scripts": {
     "server": "cd server && npm run dev",

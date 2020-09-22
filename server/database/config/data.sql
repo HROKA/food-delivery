@@ -23,7 +23,7 @@ CREATE TABLE products (
 CREATE TABLE clients (
   id SERIAL PRIMARY KEY,
   name VARCHAR(255) NOT NULL,
-  mobile_number TEXT NOT NULL,
+  mobile_number TEXT NOT NULL UNIQUE,
   facebook_profile TEXT,
   password TEXT NOT NULL,
   avatar TEXT Not NUll,
