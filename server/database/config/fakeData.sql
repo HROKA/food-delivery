@@ -39,7 +39,7 @@ BEGIN;
     (
       'Jamall',
       '$2b$10$BCg5QA8noqz/3qYOWPbktezrZWN8dnF8zus6cF18Fl79//aVC7WxK',
-      '0599344838',
+      '0599345838',
       'facebook',
       'https://cdn4.iconfinder.com/data/icons/cooking-37/64/client-food-restaurant-avatar-512.png',
       'gaza',
@@ -69,7 +69,7 @@ BEGIN;
     (
       'Sameer',
       '$2b$10$BCg5QA8noqz/3qYOWPbktezrZWN8dnF8zus6cF18Fl79//aVC7WxK',
-      '0599344838',
+      '0599348838',
       'facebook',
       'https://cdn4.iconfinder.com/data/icons/cooking-37/64/client-food-restaurant-avatar-512.png',
       'gaza',
@@ -79,7 +79,7 @@ BEGIN;
     (
       'Anas',
       '$2b$10$BCg5QA8noqz/3qYOWPbktezrZWN8dnF8zus6cF18Fl79//aVC7WxK',
-      '0599344838',
+      '0599374838',
       'facebook',
       'https://cdn4.iconfinder.com/data/icons/cooking-37/64/client-food-restaurant-avatar-512.png',
       'gaza',
@@ -89,7 +89,7 @@ BEGIN;
     (
       'Nosa',
       '$2b$10$BCg5QA8noqz/3qYOWPbktezrZWN8dnF8zus6cF18Fl79//aVC7WxK',
-      '0599344838',
+      '0599244838',
       'facebook',
       'https://cdn4.iconfinder.com/data/icons/cooking-37/64/client-food-restaurant-avatar-512.png',
       'gaza',

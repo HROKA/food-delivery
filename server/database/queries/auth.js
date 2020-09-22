@@ -18,6 +18,11 @@ const authQuery = {
         favorite,
       ]
     ),
+  signUpByFacebook: (name, facebook_profile, avatar) =>
+    connection.query(
+      `INSERT INTO clients (name,facebook_profile,avatar) VALUES ($1, $2, $3)`,
+      [name, facebook_profile, avatar]
+    ),
 };
 
 module.exports = authQuery;
