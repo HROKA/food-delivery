@@ -3,7 +3,7 @@ const { sign } = require('jsonwebtoken');
 
 const connection = require('../../database/config/connection');
 
-const adminSignIn = async (req, res, next) => {
+const clientSignIn = async (req, res, next) => {
   const { mobileNumber, password } = req.body;
   try {
     const {
@@ -16,11 +16,11 @@ const adminSignIn = async (req, res, next) => {
     compare(password, rows[0].password, (err, result) => {
       if (!result) next('Wrong user name or password');
       else {
-        const clientToken = rows[0].name + rows[0].password;
-        const cookie = sign(clientToken, process.env.SECRET_KEY);
+        const clientData = rows[0].name + rows[0].password;
+        const ClientToken = sign(clientData, process.env.SECRET_KEY);
         res.status(200).json({
           status: 'Log in successfully',
-          role: cookie,
+          role: ClientToken,
           data: rows,
         });
       }
@@ -30,4 +30,4 @@ const adminSignIn = async (req, res, next) => {
   }
 };
 
-module.exports = adminSignIn;
+module.exports = clientSignIn;
