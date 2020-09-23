@@ -11,7 +11,7 @@ authRouter.post('/admin/sign-in', adminSignIn);
 // --------------------- ***CLIENT***--------------------------
 // **POST**
 authRouter.post('/client/signup', clientSignup);
-authRouter.post('/client/sign-in', clientSignIn);
-authRouter.post('/client/sign-in/facebook', clientSignInByFacebook);
+authRouter.post('/client/signin', clientSignIn);
+authRouter.post('/client/signin/facebook', clientSignInByFacebook);
 
 module.exports = authRouter;
