@@ -19,7 +19,7 @@ const signUp = async (req, res, next) => {
     res.status(200).json({
       message: 'sign in successfully',
       CLIENT_TOKEN,
-      data: checkFaceBook.rows[0],
+      client_Data: checkFaceBook.rows[0],
     });
   } else {
     try {
@@ -29,7 +29,7 @@ const signUp = async (req, res, next) => {
       res.status(200).json({
         message: ' signUp successful',
         CLIENT_TOKEN,
-        data: { name, email, url, id: rows[0].id },
+        client_Data: { name, email, url, id: rows[0].id },
       });
     } catch (error) {
       next('signUp field');

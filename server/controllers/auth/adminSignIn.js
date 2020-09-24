@@ -18,7 +18,7 @@ const adminSignIn = async (req, res, next) => {
         res.cookie('admin', cookie).status(200).json({
           status: 'Log in successfully',
           role: 'admin',
-          data: rows,
+          client_Data: rows[0],
         });
       }
     });

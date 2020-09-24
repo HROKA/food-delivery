@@ -21,7 +21,7 @@ const clientSignIn = async (req, res, next) => {
         res.status(200).json({
           status: 'Log in successfully',
           CLIENT_TOKEN,
-          data: rows[0],
+          client_Data: rows[0],
         });
       }
     });
