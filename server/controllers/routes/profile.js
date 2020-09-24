@@ -15,15 +15,16 @@ const clients = {
 
   // get client data
   getClientData: (req, res, next) => {
-    const { id } = req.params;
+    const id = res.clientId;
+    // console.log(res);
     getClient_Data({ id })
       .then(({ rows }) => res.status(200).json(rows))
       .catch(() => next('User Not found'));
   },
 
-  // get client data
+  // Update client data
   updateProfile: (req, res, next) => {
-    const { id } = req.params;
+    const id = res.clientId;
     updateProfile({ id, ...req.body })
       .then(() =>
         res.status(200).json({ message: 'User Updated successfully' })

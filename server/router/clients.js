@@ -34,9 +34,9 @@ ClientsRouter.get('/product/:id', getProductByID);
 
 // --------------------- ***profile***--------------------------
 // **GET**
-ClientsRouter.get('/profile/:id', getClientData);
+ClientsRouter.get('/profile', getClientData);
 
 // **PATCH**
-ClientsRouter.patch('/profile/:id', updateProfile);
+ClientsRouter.patch('/profile', updateProfile);
 
 module.exports = ClientsRouter;

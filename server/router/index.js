@@ -3,10 +3,11 @@ const router = require('express').Router();
 const clientRouter = require('./clients');
 const adminRouter = require('./admin');
 const authentication = require('./auth');
+const { isClient, isAdmin } = require('../controllers/middleware');
 
-router.use('/client', clientRouter);
+router.use('/client', isClient, clientRouter);
 
-router.use('/admin', adminRouter);
+router.use('/admin', isAdmin, adminRouter);
 
 router.use('/auth', authentication);
 

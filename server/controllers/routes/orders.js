@@ -29,8 +29,7 @@ const products = {
 
   // get client orders
   getClientOrders: (req, res, next) => {
-    const { client_id } = req.body;
-    getClient_Orders(client_id)
+    getClient_Orders(res.clientId)
       .then(({ rows }) => res.status(200).json(rows))
       .catch(() => next('failed to get orders'));
   },
@@ -51,10 +50,10 @@ const products = {
 
   // delete client order
   deleteClientOrder: (req, res, next) => {
-    const { id, client_id } = req.body;
+    const { id } = req.params;
     deleteDetailsByOrderId(id)
       .then(() => {
-        deleteClient_Order(id, client_id).then(() =>
+        deleteClient_Order(id, res.clientId).then(() =>
           res
             .status(200)
             .json({ message: `Order ${id} was deleted successfully` })
