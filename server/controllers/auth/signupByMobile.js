@@ -22,11 +22,7 @@ const signUp = async (req, res, next) => {
     } else {
       // hash password
       const hashedPassword = await hash(password, 10);
-      // add the client data to use it as client token
-
-      const clientData = name + hashedPassword;
-      const clientToken = sign(clientData, process.env.SECRET_KEY);
-      await signUpByMobile(
+      const { rows } = await signUpByMobile(
         name,
         hashedPassword,
         mobile_number,
@@ -35,10 +31,13 @@ const signUp = async (req, res, next) => {
         address,
         favorite
       );
-
-      res
-        .status(200)
-        .json({ message: ' signUp successful', role: clientToken });
+      const clientId = { clientId: rows[0].id };
+      const CLIENT_TOKEN = sign(clientId, process.env.SECRET_KEY);
+      res.status(200).json({
+        message: ' signUp successful',
+        CLIENT_TOKEN,
+        data: { ...req.body, id: rows[0].id },
+      });
     }
   } catch (error) {
     next('signUp field');

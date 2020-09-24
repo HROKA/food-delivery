@@ -16,12 +16,12 @@ const clientSignIn = async (req, res, next) => {
     compare(password, rows[0].password, (err, result) => {
       if (!result) next('Wrong user name or password');
       else {
-        const clientData = rows[0].name + rows[0].password;
-        const ClientToken = sign(clientData, process.env.SECRET_KEY);
+        const clientId = { clientId: rows[0].id };
+        const CLIENT_TOKEN = sign(clientId, process.env.SECRET_KEY);
         res.status(200).json({
           status: 'Log in successfully',
-          role: ClientToken,
-          data: rows,
+          CLIENT_TOKEN,
+          data: rows[0],
         });
       }
     });
