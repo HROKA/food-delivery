@@ -12,15 +12,14 @@ const signUp = async (req, res, next) => {
       data: { url },
     },
   } = req.body;
-
   const checkFaceBook = await getClient_Data({ facebook_profile: email });
   if (checkFaceBook.rowCount > 0) {
-    const clientId = { clientId: checkFaceBook.id };
+    const clientId = { clientId: checkFaceBook.rows[0].id };
     const CLIENT_TOKEN = sign(clientId, process.env.SECRET_KEY);
     res.status(200).json({
       message: 'sign in successfully',
       CLIENT_TOKEN,
-      data: checkFaceBook,
+      data: checkFaceBook.rows[0],
     });
   } else {
     try {
