@@ -6,7 +6,6 @@ const { getClient_Data } = require('../../database/queries/profile');
 
 const signUp = async (req, res, next) => {
   const {
-    id,
     name,
     email,
     picture: {
@@ -15,22 +14,23 @@ const signUp = async (req, res, next) => {
   } = req.body;
 
   const checkFaceBook = await getClient_Data({ facebook_profile: email });
-  const clientData = id + name;
-  const clientToken = sign(clientData, process.env.SECRET_KEY);
-
   if (checkFaceBook.rowCount > 0) {
+    const clientId = { clientId: checkFaceBook.id };
+    const CLIENT_TOKEN = sign(clientId, process.env.SECRET_KEY);
     res.status(200).json({
       message: 'sign in successfully',
-      role: clientToken,
+      CLIENT_TOKEN,
       data: checkFaceBook,
     });
   } else {
     try {
-      await signUpByFacebook(name, email, url);
+      const { rows } = await signUpByFacebook(name, email, url);
+      const clientId = { clientId: rows[0].id };
+      const CLIENT_TOKEN = sign(clientId, process.env.SECRET_KEY);
       res.status(200).json({
         message: ' signUp successful',
-        role: clientToken,
-        data: { name, email, url },
+        CLIENT_TOKEN,
+        data: { name, email, url, id: rows[0].id },
       });
     } catch (error) {
       next('signUp field');

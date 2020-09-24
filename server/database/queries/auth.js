@@ -13,13 +13,13 @@ const authQuery = {
     favorite
   ) =>
     connection.query(
-      `INSERT INTO clients (name,password,mobile_number,avatar,location,address,favorite) VALUES ($1, $2, $3, $4, $5, $6, $7::text[])`,
+      `INSERT INTO clients (name,password,mobile_number,avatar,location,address,favorite) VALUES ($1, $2, $3, $4, $5, $6, $7::text[]) RETURNING id`,
       [name, password, mobile_number, avatar, location, address, favorite]
     ),
   // sign up by facebook
   signUpByFacebook: (name, facebook_profile, avatar) =>
     connection.query(
-      `INSERT INTO clients (name,facebook_profile,avatar) VALUES ($1, $2, $3)`,
+      `INSERT INTO clients (name,facebook_profile,avatar) VALUES ($1, $2, $3) RETURNING id`,
       [name, facebook_profile, avatar]
     ),
 };
