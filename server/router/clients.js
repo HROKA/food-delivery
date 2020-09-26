@@ -14,6 +14,7 @@ const {
 const {
   getClientData,
   updateProfile,
+  updateFavorite,
 } = require('../controllers/routes/profile');
 
 // --------------------- ***orders***--------------------------
@@ -38,5 +39,6 @@ ClientsRouter.get('/profile', getClientData);
 
 // **PATCH**
 ClientsRouter.patch('/profile', updateProfile);
+ClientsRouter.patch('/favorite', updateFavorite);
 
 module.exports = ClientsRouter;
