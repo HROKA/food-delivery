@@ -23,7 +23,6 @@ const clientQuery = {
     avatar,
     location,
     address,
-    favorite,
   }) =>
     connection.query(
       `UPDATE clients SET 
@@ -34,7 +33,6 @@ const clientQuery = {
       avatar = $5,
       location = $6,
       address = $7,
-      favorite=$8::text[]
    WHERE id=$9;`,
       [
         name,
@@ -44,10 +42,16 @@ const clientQuery = {
         avatar,
         location,
         address,
-        favorite,
         id,
       ]
     ),
+
+  // update favorite products
+  updateFavorite: ({ id, favorite }) =>
+    connection.query(`UPDATE clients SET favorite=$1::text[] WHERE id=$2;`, [
+      favorite,
+      id,
+    ]),
 };
 
 module.exports = clientQuery;
